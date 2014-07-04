@@ -8,6 +8,10 @@
 
 # "TinySegmenter in Python" is written by Masato Hagiwara
 # See http://lilyx.net/pages/tinysegmenterp.html
+
+# "TinySegmenter distribution is created by Tatsuro Yasukawa"
+# See https://github.com/SamuraiT/tinysegmenter
+
 import re
 
 class TinySegmenter():
