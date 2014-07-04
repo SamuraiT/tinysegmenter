@@ -1,1 +1,1 @@
-from . import tinysegmenter
+from .tinysegmenter import TinySegmenter
