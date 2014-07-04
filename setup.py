@@ -8,7 +8,7 @@ setup(
     maintainer = 'Tatsuro Yasukawa',
     maintainer_email = 't.yasukawa01@gmail.com',
     url = 'https://github.com/SamuraiT/tinysegmenter',
-    license='BSD',
+    license='New BSD',
     classifiers = [
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
