@@ -208,7 +208,7 @@ def tokenize(text):
         #  score += tc5(c4 + c5 + c6, 0)
         score += uq1(p1 + c1, 0)
         score += uq2(p2 + c2, 0)
-        score += uq1(p3 + c3, 0)
+        score += uq3(p3 + c3, 0)
         score += bq1(p2 + c2 + c3, 0)
         score += bq2(p2 + c3 + c4, 0)
         score += bq3(p3 + c2 + c3, 0)
