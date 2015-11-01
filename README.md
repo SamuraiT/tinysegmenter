@@ -23,10 +23,9 @@ Usage
 ----------
 
 ```
-from tinysegmenter import TinySegmenter
-segmenter = TinySegmenter()
+from tinysegmenter import tokenize
 statement = '私はpython大好きStanding Engineerです．'
-tokenized_statement = segmenter.tokenize(statement)
+tokenized_statement = tokenize(statement)
 print(tokenized_statement)
 # ['私', 'は', 'python', '大好き', 'Standing', ' Engineer', 'です', '．']
 ```
