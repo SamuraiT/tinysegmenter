@@ -87,10 +87,8 @@ def tokenize(text):
     result = []
     seg = ["B3","B2","B1"]
     ctype = ["O","O","O"]
-    o = list(text)
-    for i in range(0, len(o)):
-        seg.append(o[i])
-        ctype.append(_ctype(o[i]))
+    seg.extend(text)
+    ctype.extend(map(_ctype, text))
 
     seg.append("E1")
     seg.append("E2")
