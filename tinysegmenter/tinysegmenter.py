@@ -12,20 +12,22 @@
 # "TinySegmenter distribution is created by Tatsuro Yasukawa"
 # See https://github.com/SamuraiT/tinysegmenter
 
+from __future__ import unicode_literals
+
 import re
 
 __all__ = ["tokenize"]
 
-_patterns = {
-            "[一二三四五六七八九十百千万億兆]":"M",
-            "[一-龠々〆ヵヶ]":"H",
-            "[ぁ-ん]":"I",
-            "[ァ-ヴーｱ-ﾝﾞｰ]":"K",
-            "[a-zA-Zａ-ｚＡ-Ｚ]":"A",
-            "[0-9０-９]":"N"
-            }
+_patterns = [
+    ("[一二三四五六七八九十百千万億兆]", "M"),
+    ("[一-龠々〆ヵヶ]", "H"),
+    ("[ぁ-ん]", "I"),
+    ("[ァ-ヴーｱ-ﾝﾞｰ]", "K"),
+    ("[a-zA-Zａ-ｚＡ-Ｚ]", "A"),
+    ("[0-9０-９]", "N"),
+]
 
-_chartype = [[re.compile(pattern), symbol] for (pattern, symbol) in _patterns.items()]
+_chartype = [[re.compile(pattern), symbol] for (pattern, symbol) in _patterns]
 
 _BIAS = -332
 _BC1 = {"HH":6,"II":2461,"KH":406,"OH":-1378}
