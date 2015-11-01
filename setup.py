@@ -1,5 +1,9 @@
-from distutils.core import setup
+from distutils.core import setup, Command
 import os
+import sys
+
+sys.path.append('./tinysegmenter')
+sys.path.append('./tests')
 
 def read_file(filename):
     filepath = os.path.join(
@@ -8,6 +12,17 @@ def read_file(filename):
         return open(filepath).read()
     else:
         return ''
+
+class PyTest(Command):
+    user_options = []
+    def initialize_options(self):
+        pass
+    def finalize_options(self):
+        pass
+    def run(self):
+        import sys,subprocess
+        errno = subprocess.call([sys.executable, 'runtests.py'])
+        raise SystemExit(errno)
 
 setup(
     name = 'tinysegmenter3',
@@ -19,6 +34,7 @@ setup(
     url = 'https://github.com/SamuraiT/tinysegmenter',
     license='New BSD',
     long_description = read_file('README.md'),
+    cmdclass = {'test':PyTest},
     classifiers = [
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
