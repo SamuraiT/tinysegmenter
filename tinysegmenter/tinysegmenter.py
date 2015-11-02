@@ -124,12 +124,30 @@ def tokenize(text):
     w5 = seg[4]
     w6 = seg[5]
 
+    w2w3 = w2 + w3
+    w3w4 = w3 + w4
+    w4w5 = w4 + w5
+
+    w1w2w3 = w1 + w2 + w3
+    w2w3w4 = w2 + w3 + w4
+    w3w4w5 = w3 + w4 + w5
+    w4w5w6 = w4 + w5 + w6
+
     c1 = ctype[0]
     c2 = ctype[1]
     c3 = ctype[2]
     c4 = ctype[3]
     c5 = ctype[4]
     c6 = ctype[5]
+
+    c2c3 = c2 + c3
+    c3c4 = c3 + c4
+    c4c5 = c4 + c5
+
+    c1c2c3 = c1 + c2 + c3
+    c2c3c4 = c2 + c3 + c4
+    c3c4c5 = c3 + c4 + c5
+    c4c5c6 = c4 + c5 + c6
 
     # method cache
     up1 = _UP1.get
@@ -195,18 +213,18 @@ def tokenize(text):
         w3w4 = w4w5
         w4w5 = w4 + w5
 
-        w1w2w3 = w234
-        w2w3w4 = w345
-        w3w4w5 = w456
+        w1w2w3 = w2w3w4
+        w2w3w4 = w3w4w5
+        w3w4w5 = w4w5w6
         w4w5w6 = w4w5 + w6
 
         c2c3 = c3c4
         c3c4 = c4c5
         c4c5 = c4 + c5
 
-        c1c2c3 = c234
-        c2c3c4 = c345
-        c3c4c5 = c456
+        c1c2c3 = c2c3c4
+        c2c3c4 = c3c4c5
+        c3c4c5 = c4c5c6
         c4c5c6 = c4c5 + c6
 
         score += up1(p1, 0)
