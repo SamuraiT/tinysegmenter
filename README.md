@@ -30,3 +30,7 @@ print(tokenized_statement)
 # ['私', 'は', 'python', '大好き', 'Standing', ' Engineer', 'です', '．']
 ```
 
+Test Text
+----------
+
+The [test text](http://www.genpaku.org/timemachine/timemachineu8j.txt) (in the `tests` directory) was [The Time Machine](https://en.wikipedia.org/wiki/The_Time_Machine) by H.G. Wells, translated to Japanese by Hiroo Yamagata under the CC BY-SA 2.0 License.

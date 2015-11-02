@@ -1,1 +1,1 @@
-from .tinysegmenter import tokenize
+from .tinysegmenter import tokenize, _ctype
