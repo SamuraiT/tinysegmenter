@@ -24,20 +24,23 @@ if sys.version_info[0] > 2:
 __all__ = ["tokenize"]
 
 _CHARDICT = {}
-for pat, cat in [
-        (("一", "龠"), 'H'),  # Some chars in this pattern is replaced by next pattern
-        ("一二三四五六七八九十百千万億兆", 'M'),
-        ("々〆ヵヶ", 'H'),
-        (('ぁ','ん'), 'I'),
-        (('ァ','ヴ'), 'K'),
-        ("ーｰ\uff9e", 'K'),
-        (('ｱ', 'ﾝ'), 'K'),
-        (('a', 'z'), 'A'),
-        (('A', 'Z'), 'A'),
-        (('ａ', 'ｚ'), 'A'),
-        (('Ａ', 'Ｚ'), 'A'),
-        (('0', '9'), 'N'),
-        (('０', '９'), 'N')]:
+
+_CHARPATTERNS = [
+    (("一", "龠"), 'H'),  # Some chars in this pattern is replaced by next pattern
+    ("一二三四五六七八九十百千万億兆", 'M'),
+    ("々〆ヵヶ", 'H'),
+    (('ぁ','ん'), 'I'),
+    (('ァ','ヴ'), 'K'),
+    ("ーｰ\uff9e", 'K'),
+    (('ｱ', 'ﾝ'), 'K'),
+    (('a', 'z'), 'A'),
+    (('A', 'Z'), 'A'),
+    (('ａ', 'ｚ'), 'A'),
+    (('Ａ', 'Ｚ'), 'A'),
+    (('0', '9'), 'N'),
+    (('０', '９'), 'N')]
+
+for pat, cat in _CHARPATTERNS:
     if isinstance(pat, unicode):
         for c in pat:
             _CHARDICT[c] = cat
