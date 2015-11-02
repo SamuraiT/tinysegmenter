@@ -1,1 +1,1 @@
-from .tinysegmenter import TinySegmenter
+from .tinysegmenter import tokenize

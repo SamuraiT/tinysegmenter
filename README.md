@@ -1,7 +1,7 @@
 TinySegmenter
 ----------
 
-TinySegmenter -- Super compact Japanese tokenizer was originally created by 
+TinySegmenter -- Super compact Japanese tokenizer was originally created by
 (c) 2008 Taku Kudo for javascript under the terms of a new BSD licence.
 For details, see [here](http://lilyx.net/pages/tinysegmenter_licence.txt)
 
@@ -23,10 +23,9 @@ Usage
 ----------
 
 ```
-from tinysegmenter import TinySegmenter
-segmenter = TinySegmenter()
+import tinysegmenter
 statement = '私はpython大好きStanding Engineerです．'
-tokenized_statement = segmenter.tokenize(statement)
+tokenized_statement = tinysegmenter.tokenize(statement)
 print(tokenized_statement)
 # ['私', 'は', 'python', '大好き', 'Standing', ' Engineer', 'です', '．']
 ```
