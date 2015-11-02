@@ -93,8 +93,7 @@ def _ctype(c):
     return _CHARDICT.get(c, 'O')
 
 def tokenize(text):
-    if text == "":
-        return []
+    if not text: return []
 
     result = []
     seg = ["B3","B2","B1"]
