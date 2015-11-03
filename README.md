@@ -9,6 +9,8 @@ tinysegmenter for python2.x was written by Masato Hagiwara.
 for his information see [here](http://lilyx.net/pages/tinysegmenterp.html)
 
 This tinysegmenter is modified for python3.x and python2.x for distribution by Tatsuro Yasukawa.
+Additionaly, this tinysegmenter is modified for being more faster - thanks to
+@chezou, @cocoatomo and @methane.
 
 See info about [tinysegmenter](https://github.com/SamuraiT/tinysegmenter)
 
