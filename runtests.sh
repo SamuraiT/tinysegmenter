@@ -1,3 +1,3 @@
 #!/bin/sh
 
-python setup.py test
+py.test -v tests/test_tinysegmenter.py
