@@ -1,0 +1,7 @@
+machine:
+  python:
+    version: 3.4.3
+
+test:
+  override:
+    - ./runtests.sh
