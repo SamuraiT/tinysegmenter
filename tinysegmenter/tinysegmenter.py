@@ -111,10 +111,43 @@ def tokenize(text):
     ctype.append("O")
     ctype.append("O")
 
+    # initial values
     word = seg[3]
     p1 = "U"
     p2 = "U"
     p3 = "U"
+
+    w1 = seg[0]
+    w2 = seg[1]
+    w3 = seg[2]
+    w4 = seg[3]
+    w5 = seg[4]
+    w6 = seg[5]
+
+    w2w3 = w2 + w3
+    w3w4 = w3 + w4
+    w4w5 = w4 + w5
+
+    w1w2w3 = w1 + w2 + w3
+    w2w3w4 = w2 + w3 + w4
+    w3w4w5 = w3 + w4 + w5
+    w4w5w6 = w4 + w5 + w6
+
+    c1 = ctype[0]
+    c2 = ctype[1]
+    c3 = ctype[2]
+    c4 = ctype[3]
+    c5 = ctype[4]
+    c6 = ctype[5]
+
+    c2c3 = c2 + c3
+    c3c4 = c3 + c4
+    c4c5 = c4 + c5
+
+    c1c2c3 = c1 + c2 + c3
+    c2c3c4 = c2 + c3 + c4
+    c3c4c5 = c3 + c4 + c5
+    c4c5c6 = c4 + c5 + c6
 
     # method cache
     up1 = _UP1.get
@@ -163,18 +196,36 @@ def tokenize(text):
 
     for i in xrange(4, len(seg) - 3):
         score = _BIAS
-        w1 = seg[i-3]
-        w2 = seg[i-2]
-        w3 = seg[i-1]
-        w4 = seg[i]
-        w5 = seg[i+1]
+        w1 = w2
+        w2 = w3
+        w3 = w4
+        w4 = w5
+        w5 = w6
         w6 = seg[i+2]
-        c1 = ctype[i-3]
-        c2 = ctype[i-2]
-        c3 = ctype[i-1]
-        c4 = ctype[i]
-        c5 = ctype[i+1]
+        c1 = c2
+        c2 = c3
+        c3 = c4
+        c4 = c5
+        c5 = c6
         c6 = ctype[i+2]
+
+        w2w3 = w3w4
+        w3w4 = w4w5
+        w4w5 = w4 + w5
+
+        w1w2w3 = w2w3w4
+        w2w3w4 = w3w4w5
+        w3w4w5 = w4w5w6
+        w4w5w6 = w4w5 + w6
+
+        c2c3 = c3c4
+        c3c4 = c4c5
+        c4c5 = c4 + c5
+
+        c1c2c3 = c2c3c4
+        c2c3c4 = c3c4c5
+        c3c4c5 = c4c5c6
+        c4c5c6 = c4c5 + c6
 
         score += up1(p1, 0)
         score += up2(p2, 0)
@@ -187,38 +238,38 @@ def tokenize(text):
         score += uw4(w4, 0)
         score += uw5(w5, 0)
         score += uw6(w6, 0)
-        score += bw1(w2 + w3, 0)
-        score += bw2(w3 + w4, 0)
-        score += bw3(w4 + w5, 0)
-        score += tw1(w1 + w2 + w3, 0)
-        score += tw2(w2 + w3 + w4, 0)
-        score += tw3(w3 + w4 + w5, 0)
-        score += tw4(w4 + w5 + w6, 0)
+        score += bw1(w2w3, 0)
+        score += bw2(w3w4, 0)
+        score += bw3(w4w5, 0)
+        score += tw1(w1w2w3, 0)
+        score += tw2(w2w3w4, 0)
+        score += tw3(w3w4w5, 0)
+        score += tw4(w4w5w6, 0)
         score += uc1(c1, 0)
         score += uc2(c2, 0)
         score += uc3(c3, 0)
         score += uc4(c4, 0)
         score += uc5(c5, 0)
         score += uc6(c6, 0)
-        score += bc1(c2 + c3, 0)
-        score += bc2(c3 + c4, 0)
-        score += bc3(c4 + c5, 0)
-        score += tc1(c1 + c2 + c3, 0)
-        score += tc2(c2 + c3 + c4, 0)
-        score += tc3(c3 + c4 + c5, 0)
-        score += tc4(c4 + c5 + c6, 0)
-        #  score += tc5(c4 + c5 + c6, 0)
+        score += bc1(c2c3, 0)
+        score += bc2(c3c4, 0)
+        score += bc3(c4c5, 0)
+        score += tc1(c1c2c3, 0)
+        score += tc2(c2c3c4, 0)
+        score += tc3(c3c4c5, 0)
+        score += tc4(c4c5c6, 0)
+        #  score += tc5(c4c5c6, 0)
         score += uq1(p1 + c1, 0)
         score += uq2(p2 + c2, 0)
         score += uq3(p3 + c3, 0)
-        score += bq1(p2 + c2 + c3, 0)
-        score += bq2(p2 + c3 + c4, 0)
-        score += bq3(p3 + c2 + c3, 0)
-        score += bq4(p3 + c3 + c4, 0)
-        score += tq1(p2 + c1 + c2 + c3, 0)
-        score += tq2(p2 + c2 + c3 + c4, 0)
-        score += tq3(p3 + c1 + c2 + c3, 0)
-        score += tq4(p3 + c2 + c3 + c4, 0)
+        score += bq1(p2 + c2c3, 0)
+        score += bq2(p2 + c3c4, 0)
+        score += bq3(p3 + c2c3, 0)
+        score += bq4(p3 + c3c4, 0)
+        score += tq1(p2 + c1c2c3, 0)
+        score += tq2(p2 + c2c3c4, 0)
+        score += tq3(p3 + c1c2c3, 0)
+        score += tq4(p3 + c2c3c4, 0)
         p = "O"
         if score > 0:
             result.append(word)
