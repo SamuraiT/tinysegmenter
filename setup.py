@@ -27,7 +27,7 @@ class PyTest(Command):
 setup(
     name = 'tinysegmenter3',
     packages = ['tinysegmenter'],
-    version = '0.0.3',
+    version = '0.1.0',
     description = 'Super compact Japanese tokenizer',
     maintainer = 'Tatsuro Yasukawa',
     maintainer_email = 't.yasukawa01@gmail.com',
